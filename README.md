@@ -16,7 +16,3 @@ number of nix modules that are automatically imported by the flake. Each module
 also contains a README which offers descriptive information about the module.
 Any related assets, such as images or scripts, are located at `./assets` inside
 of the module.
-
-## TODO:
-
-- [ ] Migrate from Thunderbird to FairEmail + Mailspring
