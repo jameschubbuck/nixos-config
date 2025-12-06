@@ -1,0 +1,10 @@
+case "$1" in 
+  raise)
+  brightnessctl set 10%+
+  ;;
+  lower) 
+  brightnessctl set 10%-
+  ;;
+esac
+hyprctl dismissnotify
+hyprctl notify 1 1000 0 "$(brightnessctl | grep -oP '\d+%') brightness"

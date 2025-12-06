@@ -1,0 +1,40 @@
+set -euo pipefail
+
+readarray -t sinks < <(
+  wpctl status \
+    | awk '
+        /^ *├─ Sinks:/     { in_sinks=1; next }
+        /^ *├─ Sources:/   { in_sinks=0 }
+        in_sinks {
+          if (match($0, /([0-9]+)\./, M))
+            print M[1]
+        }
+      '
+)
+for id in "${sinks[@]}"; do
+  echo "$id"
+done
+
+case "$1" in
+  toggle)
+    for id in "${sinks[@]}"; do
+      wpctl set-mute "$id" toggle
+      hyprctl dismissnotify
+      wpctl get-volume "$id" | grep -qF "MUTED" && hyprctl notify 1 1000 0 "muted" || hyprctl notify 1 1000 0 "unmuted"
+    done
+    ;;
+  raise)
+    for id in "${sinks[@]}"; do
+      wpctl set-volume -l 1 "$id" 5%+
+      hyprctl dismissnotify
+      hyprctl notify 1 1000 0 "$(wpctl get-volume "$id" | grep -Po '(?<=Volume: )\d+(\.\d+)?' | awk '{ printf "%d%%\n", $1 * 100 }') volume"
+    done
+    ;;
+  lower)
+    for id in "${sinks[@]}"; do
+      wpctl set-volume -l 1 "$id" 5%-
+      hyprctl dismissnotify
+      hyprctl notify 1 1000 0 "$(wpctl get-volume "$id" | grep -Po '(?<=Volume: )\d+(\.\d+)?' | awk '{ printf "%d%%\n", $1 * 100 }') volume"
+    done
+    ;;
+esac

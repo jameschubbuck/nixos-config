@@ -1,0 +1,5 @@
+if ! hyprctl monitors | grep -q "eDP-1"; then
+  hyprctl keyword monitor "eDP-1,highrr,auto,auto"
+else
+  hyprctl keyword monitor "eDP-1, disable"
+fi
