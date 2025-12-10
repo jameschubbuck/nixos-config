@@ -22,6 +22,10 @@
     hyprland = {
       url = "github:hyprwm/Hyprland";
     };
+    helium = {
+      url = "github:AlvaroParker/helium-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = {
     self,
@@ -30,7 +34,8 @@
     nvf,
     nur,
     stylix,
-    hyprland
+    hyprland,
+    helium,
   } @ inputs: let
     lib = nixpkgs.lib;
     nixFilesInDir = dir: let

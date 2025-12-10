@@ -5,46 +5,53 @@
       vim = {
         languages = {
           enableFormat = true;
+          enableDAP = true;
           enableTreesitter = true;
           enableExtraDiagnostics = true;
           nix.enable = true;
-          markdown.enable = true;
+          markdown = {
+            enable = true;
+            extensions = {
+              markview-nvim.enable = true;
+              render-markdown-nvim.enable = true;
+            };
+          };
           html.enable = true;
           css.enable = true;
           bash.enable = true;
           ts.enable = true;
+          clang.enable = true;
           python.enable = true;
+          java.enable = true;
+          kotlin.enable = true;
+          rust.enable = true;
+          sql.enable = true;
+          tailwind.enable = true;
+          yaml.enable = true;
         };
-        git.enable = true;
-        spellcheck.enable = true;
+        git.enable = false;
+        spellcheck.enable = false;
         lsp = {
           enable = true;
           formatOnSave = true;
           otter-nvim.enable = true;
         };
         visuals = {
-          nvim-cursorline.enable = true;
-          nvim-cursorline.setupOpts.cursorline.enable = true;
-          cinnamon-nvim.enable = true;
+          nvim-cursorline.enable = false;
+          nvim-cursorline.setupOpts.cursorline.enable = false;
+          cinnamon-nvim.enable = false;
           highlight-undo.enable = true;
           cellular-automaton.enable = true;
         };
         statusline = {
           lualine = {
-            enable = true;
+            enable = false;
           };
         };
         autocomplete.blink-cmp.enable = true;
-        filetree = {
-          neo-tree = {
-            enable = true;
-          };
-        };
-        treesitter.context.enable = true;
-        telescope.enable = true;
-        dashboard.alpha.enable = true;
-        projects = {
-          project-nvim.enable = true;
+        telescope.enable = false;
+        assistant.avante-nvim = {
+          enable = true;
         };
         keymaps = [
           {
@@ -52,14 +59,13 @@
             mode = ["n"];
             action = ":wq<CR>";
             silent = true;
-            desc = "Save file and quit";
           }
+
           {
             key = "<leader>fml";
             mode = ["n"];
             action = ":CellularAutomaton make_it_rain<CR>";
             silent = true;
-            desc = "Embrace sadness";
           }
         ];
       };

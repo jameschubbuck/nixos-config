@@ -18,23 +18,19 @@
     fish = {
       enable = true;
       generateCompletions = true;
-      interactiveShellInit = "set fish_greeting";
+      interactiveShellInit = ''
+        set fish_greeting
+        function fish_user_key_bindings
+          bind \t forward-char
+          bind \e\[C complete
+        end
+      '';
       plugins = [
-        #{
-        #  # Colorizing
-        #  name = "grc";
-        #  src = pkgs.fishPlugins.grc.src;
-        #}
         {
           # Transient Prompt
           name = "transient-fish";
           src = pkgs.fishPlugins.transient-fish.src;
         }
-        #{
-        # Remove typos from history
-        #name = "sponge";
-        #src = pkgs.fishPlugins.sponge.src;
-        #}
         {
           # Turn ... -> ../..
           name = "puffer";
@@ -64,6 +60,7 @@
       ];
       shellAliases = {
         "v" = "vi";
+        "c" = "cat";
         "ls" = "lsd";
       };
     };
