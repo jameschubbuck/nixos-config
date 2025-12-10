@@ -1,7 +1,5 @@
 # NixOS Configuration
 
-Personal configuration files for NixOS.
-
 ## Structure
 
 Modules are structured with an emphasis on portability and scalability. Any
