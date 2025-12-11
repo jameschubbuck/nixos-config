@@ -49,10 +49,8 @@
           };
         };
         autocomplete.blink-cmp.enable = true;
-        telescope.enable = false;
-        assistant.avante-nvim = {
-          enable = true;
-        };
+        telescope.enable = true;
+        assistant.copilot.enable = true;
         keymaps = [
           {
             key = "<leader>wq";
