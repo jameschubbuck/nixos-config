@@ -38,25 +38,40 @@
     helium,
   } @ inputs: let
     lib = nixpkgs.lib;
-    nixFilesInDir = dir: let
-      entries = builtins.attrNames (builtins.readDir dir);
-      paths = map (name: "${dir}/${name}") entries;
-    in
-      lib.filter (path: lib.hasSuffix ".nix" path) paths;
-    allModuleFiles = lib.concatMap (
-      sub: let
-        base = ./modules/${sub};
-        dirs = lib.filter (d: builtins.pathExists d) [
-          "${base}/nix-modules"
-          "${base}/home-manager-modules"
-        ];
-      in
-        lib.concatMap nixFilesInDir dirs
-    ) (builtins.attrNames (builtins.readDir ./modules));
-    nixosModuleConfigs =
-      map import (lib.filter (path: lib.hasInfix "/nix-modules/" path) allModuleFiles);
-    homeManagerModuleConfigs =
-      map import (lib.filter (path: lib.hasInfix "/home-manager-modules/" path) allModuleFiles);
+
+    # Function to recursively find all files in a directory
+    recursivelyFindFiles = dir:
+      lib.flatten (
+        lib.mapAttrsToList
+        (
+          name: type: let
+            path = "${dir}/${name}";
+          in
+            if type == "directory"
+            then
+              # Recursively call for directories
+              recursivelyFindFiles path
+            else if type == "regular"
+            then
+              # Return path for regular files
+              [path]
+            else
+              # Ignore other types (symlinks, etc.)
+              []
+        )
+        (builtins.readDir dir)
+      );
+
+    # 1. Get ALL files recursively under ./modules
+    allModuleFiles = recursivelyFindFiles ./modules;
+
+    # 2. Filter for NixOS modules (.n.nix)
+    nixosModulePaths = lib.filter (path: lib.hasSuffix ".n.nix" path) allModuleFiles;
+    nixosModuleConfigs = map import nixosModulePaths;
+
+    # 3. Filter for Home Manager modules (.h.nix)
+    homeManagerModulePaths = lib.filter (path: lib.hasSuffix ".h.nix" path) allModuleFiles;
+    homeManagerModuleConfigs = map import homeManagerModulePaths;
   in {
     nixosConfigurations = {
       ares = nixpkgs.lib.nixosSystem {
@@ -64,16 +79,18 @@
         modules =
           nixosModuleConfigs
           ++ [
+            # Include your NixOS configuration files here
             {
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = {inherit inputs;};
                 users.james = {
-                  imports = homeManagerModuleConfigs;
+                  imports = homeManagerModuleConfigs; # Use the filtered HM modules
                 };
               };
             }
+            # External module inputs
             nur.modules.nixos.default
             home-manager.nixosModules.home-manager
             nvf.nixosModules.default
