@@ -25,7 +25,7 @@
           java.enable = true;
           kotlin.enable = true;
           rust.enable = true;
-          sql.enable = true;
+          sql.enable = false; # disabled due to sqlfluff click version mismatch
           tailwind.enable = true;
           yaml.enable = true;
         };
