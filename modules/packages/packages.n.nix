@@ -21,7 +21,14 @@
     vlc
     ffmpeg
     prismlauncher
+    librepods
   ];
   programs.adb.enable = true;
+  programs.steam.enable = true;
+  nixpkgs.config.allowUnfree = true;
   services.gvfs.enable = true; # Nautilus trash support
+  # librepods path stuff
+  systemd.tmpfiles.rules = [
+    "A+ /var/lib/bluetooth - - - - u:james:rx"
+  ];
 }

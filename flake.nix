@@ -51,6 +51,11 @@
           nixosModuleConfigs
           ++ [
             {
+              nixpkgs.overlays = [
+                (import ./modules/overlays/librepods.nix)
+              ];
+            }
+            {
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;

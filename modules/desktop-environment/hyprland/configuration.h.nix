@@ -10,6 +10,18 @@ in {
     brightnessctl
     adwaita-icon-theme
   ];
+  xdg.portal = {
+    enable = true;
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
+    config = {
+      common = {
+        default = ["gtk"];
+      };
+      hyprland = {
+        default = ["gtk" "hyprland"];
+      };
+    };
+  };
   wayland.windowManager.hyprland = {
     enable = true;
     package = hyprland_package.hyprland;
@@ -33,11 +45,15 @@ in {
         "disable_logs" = "true";
       };
       render = {
-        "direct_scanout" = "1";
+        "direct_scanout" = "0";
         "cm_fs_passthrough" = "0";
       };
       quirks = {
         "prefer_hdr" = "1";
+      };
+      xwayland = {
+        "enabled" = "true";
+        "force_zero_scaling" = "true";
       };
       input = {
         "kb_layout" = "us";

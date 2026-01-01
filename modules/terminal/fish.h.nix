@@ -5,6 +5,7 @@
     grc
     ripgrep
     wl-clipboard-rs
+    waybar
   ];
   programs = {
     fish = {
@@ -49,6 +50,7 @@
         "ls" = "lsd --ignore-glob='__pycache__' --ignore-glob='*.lock'";
         "tree" = "tree -I '__pycache__|*.lock'";
         "nix-shell" = "nix-shell --command 'fish'";
+        "librepods" = "/etc/nixos/modules/packages/librepods.sh";
       };
       functions = {
         c = {
