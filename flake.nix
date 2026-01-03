@@ -2,6 +2,8 @@
   description = "Personal NixOS configuration";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    # https://github.com/NotAShelf/nvf/issues/1312
+    nixpkgs-treesitter.url = "github:nixos/nixpkgs?rev=cfe5456da2c3972d4f567b0175ffbc1223914e95";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -27,6 +29,7 @@
   outputs = {
     self,
     nixpkgs,
+    nixpkgs-treesitter,
     home-manager,
     nvf,
     nur,
@@ -34,6 +37,14 @@
     hyprland,
     helium,
   } @ inputs: let
+    pkgs-treesitter = import nixpkgs-treesitter {system = "x86_64-linux";};
+    treesitterOverlay = final: prev: {
+      vimPlugins =
+        prev.vimPlugins
+        // {
+          nvim-treesitter = pkgs-treesitter.vimPlugins.nvim-treesitter;
+        };
+    };
     lib = nixpkgs.lib;
 
     allModuleFiles = lib.filesystem.listFilesRecursive ./modules;
@@ -52,6 +63,7 @@
           ++ [
             {
               nixpkgs.overlays = [
+                treesitterOverlay
                 (import ./modules/overlays/librepods.nix)
               ];
             }

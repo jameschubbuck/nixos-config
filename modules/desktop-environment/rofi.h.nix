@@ -6,7 +6,6 @@
         "configuration" = {
           auto-select = true;
           show-icons = false;
-          #display-drun = "";
           drun-display-format = "{name}";
         };
       };

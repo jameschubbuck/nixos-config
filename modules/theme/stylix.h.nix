@@ -6,6 +6,7 @@
       nvf.enable = true;
       ghostty.enable = true;
       fish.enable = true;
+      opencode.enable = false;
     };
     fonts = {
       serif = {

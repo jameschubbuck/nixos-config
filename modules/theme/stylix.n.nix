@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  scheme = "gruvbox-dark-soft";
+  scheme = "catppuccin-macchiato";
   theme = "${pkgs.base16-schemes}/share/themes/${scheme}.yaml";
   wallpaper = pkgs.runCommand "image.png" {} ''
     COLOR=$(${lib.getExe pkgs.yq} -r .palette.base01 ${theme})

@@ -7,6 +7,7 @@
         window-padding-x = 0;
         window-padding-y = 0;
         command = "fish";
+        gtk-titlebar-hide-when-maximized = true;
       };
     };
   };
