@@ -28,9 +28,9 @@ in {
     portalPackage = hyprland_package.xdg-desktop-portal-hyprland;
     settings = {
       "monitor" = [
-        "eDP-1, 2560x1600@165, 0x0, 1.6"
-        "DP-9, 1920x1080@144,2560x0,1"
-        "DP-1, 1920x1080@144,2560x0,1"
+        "eDP-1, 2560x1600@165, 0x0,    1.6, cm, auto"
+        "DP-9,  1920x1080@144, 2560x0, 1,   cm, auto"
+        "DP-1,  1920x1080@144, 2560x0, 1,   cm, auto"
       ];
       "$mainMod" = "SUPER";
       general = {
@@ -41,6 +41,8 @@ in {
         "vrr" = "true";
         "vfr" = "true";
         "disable_autoreload" = "true";
+        "disable_hyprland_logo" = "true";
+        "disable_splash_rendering" = "true";
       };
       debug = {
         "disable_logs" = "true";

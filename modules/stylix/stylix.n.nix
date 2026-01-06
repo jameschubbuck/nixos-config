@@ -6,13 +6,12 @@
   scheme = "catppuccin-macchiato";
   theme = "${pkgs.base16-schemes}/share/themes/${scheme}.yaml";
   wallpaper = pkgs.runCommand "image.png" {} ''
-    COLOR=$(${lib.getExe pkgs.yq} -r .palette.base01 ${theme})
-    ${lib.getExe pkgs.imagemagick} -size 1920x1080 xc:$COLOR $out
+    ${lib.getExe pkgs.imagemagick} -size 1920x1080 xc:#000000 $out
   '';
 in {
   stylix = {
     enable = true;
-    image = wallpaper;
+    # image = wallpaper;
     base16Scheme = theme;
   };
 }
