@@ -1,9 +1,9 @@
-{...}: {
+{
   services.displayManager = {
     defaultSession = "hyprland";
-    sddm = {
+    gdm = {
       enable = true;
-      wayland.enable = true;
+      wayland = true;
     };
   };
 }

@@ -1,9 +1,0 @@
-#!/usr/bin/plymouth
-# Black Screen Plymouth Theme - Just a black screen with nothing on it
-
-# Set the window background to black
-Window.SetBackgroundTopColor(0, 0, 0);
-Window.SetBackgroundBottomColor(0, 0, 0);
-
-# No other elements - just black screen
-# The theme intentionally displays nothing at all
