@@ -11,7 +11,7 @@
 in {
   stylix = {
     enable = true;
-    # image = wallpaper;
+    image = wallpaper;
     base16Scheme = theme;
     targets.plymouth.enable = false;
   };

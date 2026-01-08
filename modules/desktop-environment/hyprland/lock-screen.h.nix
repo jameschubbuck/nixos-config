@@ -7,9 +7,16 @@
     enable = true;
     settings = {
       general = {
-        no_fade_in = true;
-        no_fade_out = true;
+        hide_cursor = true;
         ignore_empty_input = true;
+      };
+      animations = {
+        enabled = false;
+      };
+      auth = {
+        fingerprint = {
+          enabled = true;
+        };
       };
     };
   };

@@ -26,8 +26,6 @@ in {
     ENABLE_HDR_WSI = "1";
     DXVK_HDR = "1";
     SDL_VIDEODRIVER = "wayland";
-    _JAVA_AWT_WM_NONREPARENTING = "1";
-    MOZ_ENABLE_WAYLAND = "1";
     ELECTRON_OZONE_PLATFORM_HINT = "wayland";
     GTK_USE_PORTAL = "1";
   };
@@ -38,8 +36,7 @@ in {
     settings = {
       "monitor" = [
         "eDP-1, 2560x1600@165, 0x0,    1.6, bitdepth, 10, cm, hdr"
-        "DP-9,  1920x1080@144, 2560x0, 1,   bitdepth, 10, cm, hdr"
-        "DP-1,  1920x1080@144, 2560x0, 1,   bitdepth, 10, cm, hdr"
+        "DP-1,  1920x1080@144, 2560x0, 1"
       ];
       "$mainMod" = "SUPER";
       general = {
@@ -50,7 +47,6 @@ in {
         "vrr" = "true";
         "vfr" = "true";
         "disable_autoreload" = "true";
-        "disable_hyprland_logo" = "true";
         "disable_splash_rendering" = "true";
       };
       debug = {
