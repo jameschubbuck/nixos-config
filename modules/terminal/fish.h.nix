@@ -55,6 +55,10 @@
         "logout" = "loginctl terminate-user $USER";
       };
       functions = {
+        on_pwd_change = {
+          body = "ls";
+          onVariable = "PWD";
+        };
         c = {
           body = ''
             cat $argv | wl-copy
