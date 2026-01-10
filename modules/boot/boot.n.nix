@@ -15,6 +15,9 @@
     consoleLogLevel = 3;
     initrd.verbose = false;
     kernelParams = [
+      "mem_sleep_default=s2idle"
+      "amdgpu.dcdebugmask=0x10"
+      "pcie_aspm=off"
       "quiet"
       "loglevel=3"
       "rd.udev.log-priority=3"

@@ -2,7 +2,6 @@
   services = {
     fwupd.enable = true;
     auto-cpufreq = {
-      # power-profiles-daemon performs very slightly better, but auto-cpufreq can govern itself
       enable = false;
       settings = {
         battery = {

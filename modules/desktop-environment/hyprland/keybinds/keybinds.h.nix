@@ -1,4 +1,7 @@
-{
+{pkgs, ...}: let
+  webSearch = pkgs.writeShellScriptBin "web-search" (builtins.readFile ./search);
+in {
+  home.packages = [pkgs.jq];
   wayland.windowManager.hyprland = {
     settings = let
       baseBinds = [
@@ -9,6 +12,7 @@
         "Q, killactive"
         "F, exec, hyprctl dispatch fullscreenstate 2 0"
         "Escape, exec, hyprlock --no-fade-in"
+        "space, exec, ${webSearch}/bin/web-search"
       ];
     in {
       bind = builtins.map (b: ''$mainMod, ${b}'') baseBinds;

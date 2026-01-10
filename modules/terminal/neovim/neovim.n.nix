@@ -1,58 +1,56 @@
 {
   programs.nvf = {
     enable = true;
-    settings = {
-      vim = {
-        languages = {
-          enableFormat = true;
-          enableDAP = true;
-          enableTreesitter = true;
-          enableExtraDiagnostics = true;
-          nix.enable = true;
-          markdown = {
-            enable = true;
-            extensions = {
-              markview-nvim.enable = true;
-              render-markdown-nvim.enable = true;
-            };
-          };
-          html.enable = true;
-          css.enable = true;
-          bash.enable = true;
-          ts.enable = true;
-          clang.enable = true;
-          python.enable = true;
-          java.enable = true;
-          kotlin.enable = true;
-          rust.enable = true;
-          sql.enable = false; # disabled due to sqlfluff click version mismatch
-          tailwind.enable = true;
-          yaml.enable = true;
-        };
-        git.enable = true;
-        spellcheck.enable = true;
-        lsp = {
-          enable = true;
-          formatOnSave = true;
-          otter-nvim.enable = true;
-        };
-        visuals = {
-          nvim-cursorline.enable = false;
-          nvim-cursorline.setupOpts.cursorline.enable = false;
-          cinnamon-nvim.enable = false;
-          highlight-undo.enable = true;
-          cellular-automaton.enable = true;
-        };
-        statusline = {
-          lualine = {
-            enable = false;
-          };
-        };
-        autocomplete.blink-cmp.enable = true;
-        telescope.enable = true;
-        assistant.avante-nvim = {
+    settings.vim = {
+      spellcheck = {
+        enable = true;
+      };
+      lsp = {
+        enable = true;
+        formatOnSave = true;
+        lspSignature.enable = true;
+      };
+      languages = {
+        enableFormat = true;
+        enableTreesitter = true;
+        enableExtraDiagnostics = true;
+        nix.enable = true;
+        markdown.enable = true;
+      };
+      visuals = {
+        highlight-undo.enable = true;
+        indent-blankline.enable = true;
+      };
+      statusline = {
+        lualine = {
           enable = true;
         };
+      };
+      autopairs.nvim-autopairs.enable = true;
+      autocomplete = {
+        nvim-cmp.enable = true;
+      };
+      snippets.luasnip.enable = true;
+
+      treesitter.context.enable = true;
+
+      telescope.enable = true;
+
+      git = {
+        enable = true;
+        gitsigns.enable = true;
+      };
+
+      utility = {
+        diffview-nvim.enable = true;
+        motion = {
+          hop.enable = true;
+          leap.enable = true;
+        };
+      };
+
+      comments = {
+        comment-nvim.enable = true;
       };
     };
   };
