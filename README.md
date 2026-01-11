@@ -2,17 +2,17 @@
 
 ## Structural Overview
 
-ZorrOS is a high level NixOS configuration which aims to create a productive
-development environment with open source tooling and minimal distractions. It is
-written with emphasis on being both portable and scalable - many modules can be
-used elsewhere with little or no modification. Home manager modules and nix
-modules are automatically imported by the flake and are differentiated with the
-`h` or `n` infix which respectively delineate home manager modules and nix
-modules.
+ZorrOS is a high level [NixOS](https://nixos.org/) configuration which aims to
+create a productive development environment with open source tooling and minimal
+distraction. It is written with emphasis on being both portable and scalable -
+many modules can be used elsewhere with little or no modification. Home manager
+modules and nix modules are automatically imported by the flake and are
+differentiated with the `h` or `n` infix which respectively delineate home
+manager modules and nix modules.
 
 ## Installation
 
-1. Install [NixOS](https://nixos.org/) either with the
+1. Install NixOS either with the
    [official method](https://nixos.org/manual/nixos/stable/#ch-installation) or
    in place via [nixos-infect](https://github.com/elitak/nixos-infect) on a
    newly provisioned system.
@@ -99,6 +99,6 @@ provides a performant terminal emulator with extensive configurability. Text
 editing is handled with [Neovim](https://neovim.io/), and Neovim configuration
 is handled by [NVF](https://nvf.notashelf.dev/index.html).
 [Fish](https://fishshell.com/) was chosen as the user-facing shell because it is
-highly configurable without a noticeable performance sacrifice. All system-level
-operations still utilize [Bash](https://www.gnu.org/software/bash/), for
-compatibility purposes.
+highly configurable without a noticeable performance sacrifice. For
+compatibility purposes, all system-level operations still utilize
+[Bash](https://www.gnu.org/software/bash/).
