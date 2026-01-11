@@ -14,8 +14,10 @@
         };
       };
     };
-
     fstrim.enable = true;
-    mullvad-vpn.enable = true;
+    services.libinput = {
+      enable = true;
+      touchpad.disableWhileTyping = false;
+    };
   };
 }

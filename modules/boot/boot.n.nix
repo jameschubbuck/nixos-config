@@ -6,12 +6,10 @@
       efi.canTouchEfiVariables = true;
       timeout = 0;
     };
-
     plymouth = {
       enable = true;
       theme = "bgrt";
     };
-
     consoleLogLevel = 3;
     initrd.verbose = false;
     kernelParams = [

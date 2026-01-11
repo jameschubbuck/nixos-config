@@ -16,11 +16,10 @@
     inkscape # Vector editor
     geary # Gnome email
     bc # Basic calculator
-    adwaita-icon-theme # Icon
-    mpv
+    adwaita-icon-theme # Icons
+    mpv # Media player
     vlc
     ffmpeg
-    prismlauncher
     librepods
     android-tools
   ];
@@ -31,4 +30,5 @@
   systemd.tmpfiles.rules = [
     "A+ /var/lib/bluetooth - - - - u:james:rx"
   ];
+  services.mullvad-vpn.enable = true;
 }
