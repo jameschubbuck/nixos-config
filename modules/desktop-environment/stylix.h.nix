@@ -3,10 +3,10 @@
     targets = {
       rofi.enable = true;
       gtk.enable = true;
-      nvf.enable = true;
       ghostty.enable = true;
       fish.enable = true;
       opencode.enable = false;
+      nvf.enable = false;
     };
     fonts = {
       serif = {

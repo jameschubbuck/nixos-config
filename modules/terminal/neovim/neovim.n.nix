@@ -25,10 +25,6 @@
         tailwind.enable = true;
         rust.enable = true;
       };
-      visuals = {
-        highlight-undo.enable = true;
-        indent-blankline.enable = true;
-      };
       statusline = {
         lualine = {
           enable = true;

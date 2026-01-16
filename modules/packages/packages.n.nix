@@ -22,6 +22,8 @@
     ffmpeg
     librepods
     android-tools
+    blender
+    super-slicer
   ];
   programs.steam.enable = true;
   nixpkgs.config.allowUnfree = true;
