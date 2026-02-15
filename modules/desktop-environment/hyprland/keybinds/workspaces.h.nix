@@ -7,10 +7,20 @@
         ${pkgs.hyprland}/bin/hyprctl dispatch movetoworkspace "$ws_num"
       elif [ "$operation" = "change" ]; then
         ${pkgs.hyprland}/bin/hyprctl dispatch workspace "$ws_num"
+        
+        # Auto-fullscreen if only one window on the new workspace
+        window_count=$(${pkgs.hyprland}/bin/hyprctl -j clients | ${pkgs.jq}/bin/jq --arg ws "$ws_num" '[.[] | select(.workspace.id == ($ws | tonumber))] | length')
+        if [ "$window_count" = "1" ]; then
+          is_fullscreen=$(${pkgs.hyprland}/bin/hyprctl -j clients | ${pkgs.jq}/bin/jq -r --arg ws "$ws_num" '.[] | select(.workspace.id == ($ws | tonumber)) | .fullscreen')
+          if [ "$is_fullscreen" = "0" ]; then
+            ${pkgs.hyprland}/bin/hyprctl dispatch fullscreenstate 2 0
+          fi
+        fi
       fi
     fi
   '';
 in {
+  home.packages = [ pkgs.jq ];
   wayland.windowManager.hyprland = {
     settings = {
       bind =
