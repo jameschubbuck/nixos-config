@@ -20,10 +20,13 @@
     super-slicer
     (callPackage ./betterbird.nix {})
     (callPackage ./openfoam.nix {})
+    (pkgs.callPackage ./monitor-control.nix {})
+    pkgs.ddcutil
     zotero
   ];
   programs.steam.enable = true;
   nixpkgs.config.allowUnfree = true;
   services.mullvad-vpn.enable = true;
   programs.fuse.userAllowOther = true;
+  hardware.i2c.enable = true;
 }
