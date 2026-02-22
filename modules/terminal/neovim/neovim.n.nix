@@ -1,58 +1,32 @@
 {
-  config,
+  pkgs,
   lib,
+  config,
   ...
 }: let
-  colors = config.lib.stylix.colors.withHashtag;
-  transparentGroups = [
-    "Normal"
-    "NormalNC"
-    "NormalFloat"
-    "FloatBorder"
-    "SignColumn"
-    "LineNr"
-    "CursorLineNr"
-    "EndOfBuffer"
-    "GitSignsAdd"
-    "GitSignsChange"
-    "GitSignsDelete"
-    "DiagnosticSignError"
-    "DiagnosticSignWarn"
-    "DiagnosticSignInfo"
-    "DiagnosticSignHint"
-    "TelescopeNormal"
-    "TelescopePromptNormal"
-    "TelescopeResultsNormal"
-    "TelescopePreviewNormal"
-    "TelescopePromptPrefix"
-    "FoldColumn"
-    "Folded"
-    "GitSignsCurrentLineBlame"
-    "GitSignsAddLn"
-    "GitSignsChangeLn"
-    "GitSignsDeleteLn"
-  ];
-  borderGroups = [
-    "TelescopeBorder"
-    "TelescopePromptBorder"
-    "TelescopeResultsBorder"
-    "TelescopePreviewBorder"
-  ];
-  mkTransparentHighlight = group: ''vim.cmd("highlight ${group} guibg=NONE ctermbg=NONE")'';
-  mkBorderHighlight = group: ''vim.cmd("highlight ${group} guibg=NONE ctermbg=NONE guifg=${colors.base0D}")'';
-  highlightLua = lib.concatStringsSep "\n" (
-    (map mkTransparentHighlight transparentGroups)
-    ++ (map mkBorderHighlight borderGroups)
-    ++ [''vim.cmd("highlight TelescopeSelection guibg=NONE ctermbg=NONE guifg=${colors.base0E}")'']
-  );
+  highlightLua = import ./theme-helper.nix {inherit pkgs lib config;};
 in {
   programs.nvf = {
     enable = true;
     settings.vim = {
+      options = {
+        expandtab = true;
+        shiftwidth = 2;
+        tabstop = 2;
+        softtabstop = 2;
+      };
       theme.transparent = true;
       ui.borders.enable = true;
       luaConfigPost =
-        builtins.readFile ./lua/telescope.lua + "\n" + highlightLua;
+        ''
+          vim.keymap.set({'n', 'x', 'o'}, '<leader>s', function()
+            require('leap').leap { windows = { vim.fn.win_getid() } }
+          end, { desc = 'Leap bidirectional' })
+        ''
+        + "\n"
+        + builtins.readFile ./lua/telescope.lua
+        + "\n"
+        + highlightLua;
       spellcheck = {
         enable = true;
       };
@@ -66,8 +40,10 @@ in {
         enableTreesitter = true;
         enableExtraDiagnostics = true;
         nix.enable = true;
+        svelte.enable = true;
         markdown.enable = true;
         ts.enable = true;
+        astro.enable = true;
         clang.enable = true;
         tailwind.enable = true;
         rust.enable = true;
@@ -87,8 +63,14 @@ in {
       utility = {
         diffview-nvim.enable = true;
         motion = {
-          hop.enable = true;
           leap.enable = true;
+          leap.mappings = {
+            leapForwardTo = null;
+            leapBackwardTo = null;
+            leapForwardTill = null;
+            leapBackwardTill = null;
+            leapFromWindow = null;
+          };
         };
       };
       comments = {

@@ -10,7 +10,7 @@
       inherit key action mode silent;
     }
     // lib.optionalAttrs (desc != null) {
-      lua = true;
+      inherit desc;
     };
 
   keymaps = [

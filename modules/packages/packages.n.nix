@@ -16,7 +16,6 @@
     librepods
     android-tools
     blender
-    mailspring
     super-slicer
     (callPackage ./betterbird.nix {})
     (callPackage ./openfoam.nix {})

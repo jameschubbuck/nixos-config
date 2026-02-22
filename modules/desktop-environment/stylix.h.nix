@@ -1,6 +1,7 @@
 {
   stylix = {
     targets = {
+      anki.enable = true;
       rofi.enable = true;
       gtk = {
         enable = true;
