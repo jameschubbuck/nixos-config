@@ -1,7 +1,5 @@
-{pkgs, ...}: let
-  helioricFlake = builtins.getFlake "github:jameschubbuck/helioric";
-in {
+{pkgs, inputs, ...}: {
   environment.systemPackages = [
-    helioricFlake.packages.${pkgs.system}.default
+    inputs.helioric.packages.${pkgs.system}.default
   ];
 }

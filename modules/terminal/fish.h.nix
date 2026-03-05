@@ -22,7 +22,7 @@
       sleep 1
     done
   '';
-  
+
   librepodsScript = pkgs.writeShellScriptBin "librepods" ''
     ${pkgs.waybar}/bin/waybar | while read -r line; do
       echo "$line"
@@ -50,10 +50,13 @@ in {
       generateCompletions = true;
       interactiveShellInit = ''
         set -g fish_greeting ""
-        bind \t forward-char
-        bind \e\[C complete
-      '';
+      ''; # Notice: Removed the conflicting bind commands here
       plugins = [
+        # Your custom local plugin!
+        {
+          name = "smart-tab";
+          src = ./smart-tab; # Make sure this path points to the directory you created
+        }
         {
           name = "transient-fish";
           src = pkgs.fishPlugins.transient-fish.src;

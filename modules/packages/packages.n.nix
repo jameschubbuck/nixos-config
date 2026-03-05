@@ -14,16 +14,15 @@
     mpv # Media player
     ffmpeg
     librepods
+    kdePackages.qtstyleplugin-kvantum # Dependency for librepods styling
     android-tools
     blender
     super-slicer
     (callPackage ./betterbird.nix {})
-    (callPackage ./openfoam.nix {})
-    (pkgs.callPackage ./monitor-control.nix {})
     pkgs.ddcutil
     zotero
     bluetui
-    wiremix
+    pulsemixer
   ];
   programs.steam.enable = true;
   nixpkgs.config.allowUnfree = true;

@@ -23,6 +23,10 @@
       url = "github:vikingnope/helium-browser-nix-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    helioric = {
+      url = "github:jameschubbuck/helioric";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = {
     self,
@@ -33,6 +37,7 @@
     stylix,
     hyprland,
     helium,
+    helioric,
   } @ inputs: let
     lib = nixpkgs.lib;
     zorrOS = import ./zorros.nix;
@@ -50,7 +55,7 @@
           ++ [
             {
               nixpkgs.overlays = [
-                (import ./modules/overlays/librepods.nix)
+                # (import ./modules/overlays/librepods.nix)
               ];
             }
             {

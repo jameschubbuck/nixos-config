@@ -1,3 +1,0 @@
-{
-  programs.anki.enable = true;
-}
