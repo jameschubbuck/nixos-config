@@ -50,13 +50,8 @@ in {
       generateCompletions = true;
       interactiveShellInit = ''
         set -g fish_greeting ""
-      ''; # Notice: Removed the conflicting bind commands here
+      '';
       plugins = [
-        # Your custom local plugin!
-        {
-          name = "smart-tab";
-          src = ./smart-tab; # Make sure this path points to the directory you created
-        }
         {
           name = "transient-fish";
           src = pkgs.fishPlugins.transient-fish.src;

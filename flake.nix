@@ -55,7 +55,7 @@
           ++ [
             {
               nixpkgs.overlays = [
-                # (import ./modules/overlays/librepods.nix)
+                (import ./modules/overlays/librepods.nix)
               ];
             }
             {

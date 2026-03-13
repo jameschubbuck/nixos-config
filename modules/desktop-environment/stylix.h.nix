@@ -1,11 +1,11 @@
 {
   stylix = {
     targets = {
-      rofi.enable = true;
       gtk = {
         enable = true;
       };
       ghostty.enable = true;
+      vicinae.enable = true;
       fish.enable = true;
       opencode.enable = false;
       nvf = {

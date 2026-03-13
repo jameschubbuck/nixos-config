@@ -1,6 +1,6 @@
 {
   username = "james";
-  padding = 5;
-  opacity = 0.8;
+  padding = 0;
+  opacity = 1;
   theme = "catppuccin-macchiato";
 }
