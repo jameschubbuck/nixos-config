@@ -5,7 +5,7 @@
         enable = true;
       };
       ghostty.enable = true;
-      vicinae.enable = true;
+      rofi.enable = true;
       fish.enable = true;
       opencode.enable = false;
       nvf = {

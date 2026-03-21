@@ -4,7 +4,7 @@
       baseBinds = [
         "G, exec, ghostty"
         "H, exec, helium --password-store=basic"
-        "Super_L, exec, vicinae toggle"
+        "Super_L, exec, rofi-menu"
         "Q, killactive"
         "F, exec, hyprctl dispatch fullscreenstate 2 0"
         "Escape, exec, hyprlock --no-fade-in"

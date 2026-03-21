@@ -6,11 +6,6 @@
   stylix = {
     enable = true;
     image = ./assets/black.png;
-    cursor = {
-      package = pkgs.hackneyed;
-      name = "Hackneyed";
-      size = 32;
-    };
     base16Scheme = "${pkgs.base16-schemes}/share/themes/${zorrOS.theme}.yaml";
     targets.plymouth.enable = false;
     fonts = {

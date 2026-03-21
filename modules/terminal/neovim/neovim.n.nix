@@ -43,7 +43,6 @@ in {
         svelte.enable = true;
         markdown.enable = true;
         ts.enable = true;
-        astro.enable = true;
         clang.enable = true;
         tailwind.enable = true;
         rust.enable = true;

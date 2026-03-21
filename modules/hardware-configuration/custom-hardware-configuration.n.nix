@@ -1,4 +1,5 @@
 {
+  hardware.i2c.enable = true;
   services = {
     fwupd.enable = true;
     auto-cpufreq = {
@@ -15,10 +16,12 @@
       };
     };
     fstrim.enable = true;
-    services.libinput = {
-      enable = true;
-      touchpad.disableWhileTyping = false;
-    };
+    #libinput = {
+    #  enable = true;
+    #  touchpad.disableWhileTyping = false;
+    #};
   };
-  hardware.graphics.enable = true;
+  hardware.graphics = {
+    enable = true;
+  };
 }

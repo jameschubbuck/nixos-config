@@ -27,6 +27,7 @@
       url = "github:jameschubbuck/helioric";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
   };
   outputs = {
     self,
@@ -38,6 +39,7 @@
     hyprland,
     helium,
     helioric,
+    nix-flatpak,
   } @ inputs: let
     lib = nixpkgs.lib;
     zorrOS = import ./zorros.nix;
@@ -72,6 +74,7 @@
             home-manager.nixosModules.home-manager
             nvf.nixosModules.default
             stylix.nixosModules.stylix
+            nix-flatpak.nixosModules.nix-flatpak
           ];
       };
     };
