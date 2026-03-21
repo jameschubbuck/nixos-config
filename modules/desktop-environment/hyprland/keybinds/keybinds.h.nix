@@ -3,8 +3,8 @@
     settings = let
       baseBinds = [
         "G, exec, ghostty"
-        "H, exec, helium --password-store=basic"
-        "Super_L, exec, rofi-menu"
+        "H, exec, helium"
+        "Super_L, exec, launcher"
         "Q, killactive"
         "F, exec, hyprctl dispatch fullscreenstate 2 0"
         "Escape, exec, hyprlock --no-fade-in"

@@ -1,13 +1,12 @@
 {
   stylix = {
     targets = {
-      gtk = {
-        enable = true;
-      };
+      gtk.enable = true;
       ghostty.enable = true;
       rofi.enable = true;
       fish.enable = true;
       opencode.enable = false;
+      waybar.enable = false;
       nvf = {
         enable = true;
         transparentBackground = true;
